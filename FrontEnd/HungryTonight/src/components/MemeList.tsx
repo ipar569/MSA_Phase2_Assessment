@@ -49,12 +49,14 @@ export default class MemeList extends React.Component<IProps, {}> {
     private createCard(meme:any){
         const style = { 
             backgroundImage: 'url(' + meme.url + ')',
+            backgroundSize: '100% calc(100vh - 220px)'
+            
         };
         return (
             
       <article className="card">
         <header style={style} className="card-header">
-            <h4 className="card-header--title">{meme.tags}</h4>
+            <div className="card-tags"><a className="card-header--title">{meme.tags}</a></div>
         </header>
          <div className="card-body">
      
