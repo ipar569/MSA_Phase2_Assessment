@@ -1,5 +1,6 @@
 
 import * as React from "react";
+// import Modal from 'react-responsive-modal';
 
 
 interface IProps {
@@ -11,7 +12,11 @@ interface IProps {
 export default class RecipeList extends React.Component<IProps, {}> {
     constructor(props: any) {
         super(props)   
+        this.state = {
+            open: false,
+          };
         this.searchByTag = this.searchByTag.bind(this)
+        this.selectNewRecipe = this.selectNewRecipe.bind(this)
     }
 
 	public render() {
@@ -52,6 +57,7 @@ export default class RecipeList extends React.Component<IProps, {}> {
             backgroundSize: '100%'
             
         };
+
         return (
             
       <article className="card">
@@ -63,13 +69,19 @@ export default class RecipeList extends React.Component<IProps, {}> {
                 <h3>{recipe.name}</h3>
      
                 <p className="body-content">{recipe.overview}</p>
-                <button className="find-button">
+                <button className="find-button" onClick={this.selectNewRecipe.bind(this,recipe)}>
                     Find out more
                 </button>
         </div>
      </article>
         )
     }
+
+    private selectNewRecipe(recipe: any){
+        this.props.selectNewRecipe(recipe)
+    }
+
+
 
     // Search recipe by tag
     private searchByTag() {

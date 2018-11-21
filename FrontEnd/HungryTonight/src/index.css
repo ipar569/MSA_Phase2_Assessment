@@ -104,6 +104,7 @@ button:focus, input[type="button"]:focus {
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
   color:#ff483b;
+  margin-top:5px;
   margin-bottom: -15px;
 }
 
@@ -113,6 +114,19 @@ hr{
 
 .bold{
   font-weight: bold;
+}
+
+.single-image{
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
+  overflow: hidden;
+  max-height: calc(100vh - 220px);
+  width: 100%;
+  margin-bottom:10px;
+  border-radius: 5px;
 }
 
 .add-hr{

@@ -9,7 +9,9 @@ import RecipeList from './components/RecipeList';
 
 interface IState {
 	currentRecipe: any,
+
 	open: boolean,
+	openRecipe: boolean,
 	recipes: any[],
 	
 	uploadFileList: any,
@@ -25,10 +27,9 @@ class App extends React.Component<{}, IState> {
 			authenticated: false,
 			currentRecipe: {"id":0, "title":"Loading ","url":"","tags":"⚆ _ ⚆","uploaded":"","width":"0","height":"0"},
 			open: false,
+			openRecipe: false,
 			predictionResult: null,
 			recipes: [],
-			
-			
 			refCamera: React.createRef(),
 			uploadFileList: null,
 			
@@ -45,8 +46,8 @@ class App extends React.Component<{}, IState> {
 	}
 
 	public render() {
-		const { open } = this.state;
-		
+		const { open, openRecipe } = this.state;
+		const recipe = this.state.currentRecipe;
 		// const { authenticated } = this.state
 		return (
 			<div>
@@ -130,6 +131,16 @@ class App extends React.Component<{}, IState> {
 							<button type="button" className="find-button bold" onClick={this.uploadRecipe}>Upload</button>
 						</form>
 					</Modal>
+					<Modal open={openRecipe} onClose={this.onCloseModal}>
+						<form>
+							<div>
+								<h1 className="add-header">{recipe.name}</h1>
+								<hr />
+							</div>
+							<img className='single-image' src={recipe.url}/>
+							<button type="button" className="find-button bold" onClick={this.uploadRecipe}>Upload</button>
+						</form>
+					</Modal>
 					
 				</div>
 				
@@ -189,13 +200,15 @@ class App extends React.Component<{}, IState> {
 	
 	// Modal close
 	private onCloseModal = () => {
-		this.setState({ open: false });
+		this.setState({ open: false,openRecipe:false });
 	};
 	
 	// Change selected recipe
 	private selectNewRecipe(newRecipe: any) {
 		this.setState({
-			currentRecipe: newRecipe
+			
+			currentRecipe: newRecipe,
+			openRecipe: true
 		})
 	}
 
