@@ -90,14 +90,29 @@ class App extends React.Component<{}, IState> {
 					<Modal open={open} onClose={this.onCloseModal}>
 						<form>
 							<div className="form-group">
-								<label>recipe Title</label>
-								<input type="text" className="form-control" id="recipe-title-input" placeholder="Enter Title" />
+								<label>Recipe Name</label>
+								<input type="text" className="form-control" id="recipe-name-input" placeholder="Enter Name of the Dish" />
 								<small className="form-text text-muted">You can edit any recipe later</small>
 							</div>
 							<div className="form-group">
-								<label>Tag</label>
-								<input type="text" className="form-control" id="recipe-tag-input" placeholder="Enter Tag" />
-								<small className="form-text text-muted">Tag is used for search</small>
+								<label>Cusine/Tag</label>
+								<input type="text" className="form-control" id="recipe-tag-input" placeholder="Enter " />
+								<small className="form-text text-muted">Tag/Cuisine is used for search and identification</small>
+							</div>
+							<div className="form-group">
+								<label>Overview</label>
+								<input type="text" className="form-control" id="recipe-overview-input" placeholder="Enter " />
+								<small className="form-text text-muted">Please describe the overview of the dish</small>
+							</div>
+							<div className="form-group">
+								<label>Ingridients</label>
+								<input type="text" className="form-control" id="recipe-ingridients-input" placeholder="Enter " />
+								<small className="form-text text-muted">You can edit any recipe late</small>
+							</div>
+							<div className="form-group">
+								<label>Description</label>
+								<input type="text" className="form-control" id="recipe-description-input" placeholder="Enter " />
+								<small className="form-text text-muted">You can edit any recipe late</small>
 							</div>
 							<div className="form-group">
 								<label>Image</label>

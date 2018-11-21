@@ -110,6 +110,7 @@ namespace MyRecipes.Controllers
                     Recipe recipeItem = new Recipe();
                     recipeItem.Name = recipe.Name;
                     recipeItem.Tags = recipe.Tags;
+                    recipeItem.Author = recipe.Author;
                     recipeItem.Overview = recipe.Overview;
                     recipeItem.Ingridients = recipe.Ingridients;
                     recipeItem.Description = recipe.Description;
