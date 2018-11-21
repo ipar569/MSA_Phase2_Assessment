@@ -3,12 +3,12 @@ import * as React from "react";
 
 
 interface IProps {
-    memes: any[],
-    selectNewMeme: any,
+    recipes: any[],
+    selectNewRecipe: any,
     searchByTag: any
 }
 
-export default class MemeList extends React.Component<IProps, {}> {
+export default class RecipeList extends React.Component<IProps, {}> {
     constructor(props: any) {
         super(props)   
         this.searchByTag = this.searchByTag.bind(this)
@@ -26,29 +26,29 @@ export default class MemeList extends React.Component<IProps, {}> {
                     </div>  
                 </div>
                 <div className="app-card-list" id="app-card-list">
-                {this.createTable()}
+                {this.createCardsList()}
                 </div>
             </div>
 		);
     }
 
-    // Construct table using meme list
-	private createTable() {
+    // Construct cards and display it on the page for each recipes
+	private createCardsList() {
         const cards:any = []
-        const memeList = this.props.memes
-        if (memeList == null) {
+        const recipeList = this.props.recipes
+        if (recipeList == null) {
             return cards
         }
 
-        for (const meme of memeList) {
-            cards.push(this.createCard(meme))
+        for (const recipe of recipeList) {
+            cards.push(this.createCard(recipe))
         }
         return cards
     }
 
-    private createCard(meme:any){
+    private createCard(recipe:any){
         const style = { 
-            backgroundImage: 'url(' + meme.url + ')',
+            backgroundImage: 'url(' + recipe.url + ')',
             backgroundSize: '100% calc(100vh - 220px)'
             
         };
@@ -56,20 +56,20 @@ export default class MemeList extends React.Component<IProps, {}> {
             
       <article className="card">
         <header style={style} className="card-header">
-            <div className="card-tags"><a className="card-header--title">{meme.tags}</a></div>
+            <div className="card-tags"><a className="card-header--title">{recipe.tags}</a></div>
         </header>
          <div className="card-body">
      
-             <h2>{meme.id}</h2>
+             <h2>{recipe.name}</h2>
      
-                <p className="body-content">{meme.name}</p>
+                <p className="body-content">{recipe.overview}</p>
      
         </div>
      </article>
         )
     }
 
-    // Search meme by tag
+    // Search recipe by tag
     private searchByTag() {
         const textBox = document.getElementById("search-tag-textbox") as HTMLInputElement
         if (textBox === null) {

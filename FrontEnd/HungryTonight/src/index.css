@@ -22,14 +22,14 @@ body{
   padding-top: 10px;
 }
 
-/* Selected Meme */
-.meme-wrapper {
+/* Selected recipe */
+.recipe-wrapper {
   padding-top:20px;
   padding-left: 30px;
   padding-right: 30px;
 }
 
-.meme-heading {
+.recipe-heading {
   display: flex;
   align-items: left;
   justify-content: left;
@@ -37,7 +37,7 @@ body{
   font-size: 18px;
 }
 
-.meme-img {
+.recipe-img {
   margin-top: 10px;
   display: flex;
   align-items: center;
@@ -46,12 +46,12 @@ body{
   overflow: hidden;
 }
 
-.meme-img img {
+.recipe-img img {
   max-height: calc(100vh - 220px);
   width: 100%;
 }
 
-.meme-date {
+.recipe-date {
   display: flex;
   align-items: left;
   justify-content: left;
@@ -60,7 +60,7 @@ body{
   margin-top: 0px;
 }
 
-.meme-done-button {
+.recipe-done-button {
   display: flex;
   align-items: left;
   justify-content: left;
@@ -91,12 +91,12 @@ body{
   right: 0px;
 }
 
-/* Meme List */
-.meme-list-wrapper {
+/* recipe List */
+.recipe-list-wrapper {
   padding-top:20px;
 }
 
-.meme-list-table {
+.recipe-list-table {
   margin-top: 20px;
   height: calc(100vh - 140px);
   overflow-y: scroll;
@@ -133,10 +133,10 @@ body{
 
   .card-tags{
     color: #eeeeee;
-    width:40%;
+    display: inline-block;
     height: auto;
     background-color: rgba(0, 123, 238, 0.596);
-    padding: 8px 8px 2px 8px;
+    padding: 4px 8px 3px 9px;
     border-radius: 10px;
   }
 

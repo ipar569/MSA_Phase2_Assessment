@@ -3,14 +3,15 @@ import Modal from 'react-responsive-modal';
 // import * as Webcam from "react-webcam";
 import './App.css';
 // import MemeDetail from './components/MemeDetail';
-import MemeList from './components/MemeList';
+import RecipeList from './components/RecipeList';
 import PatrickLogo from './patrick-logo.png';
 
 
 interface IState {
-	currentMeme: any,
-	memes: any[],
+	currentRecipe: any,
 	open: boolean,
+	recipes: any[],
+	
 	uploadFileList: any,
 	authenticated: boolean,
 	refCamera: any
@@ -22,10 +23,12 @@ class App extends React.Component<{}, IState> {
         super(props)
         this.state = {
 			authenticated: false,
-			currentMeme: {"id":0, "title":"Loading ","url":"","tags":"⚆ _ ⚆","uploaded":"","width":"0","height":"0"},
-			memes: [],
+			currentRecipe: {"id":0, "title":"Loading ","url":"","tags":"⚆ _ ⚆","uploaded":"","width":"0","height":"0"},
 			open: false,
 			predictionResult: null,
+			recipes: [],
+			
+			
 			refCamera: React.createRef(),
 			uploadFileList: null,
 			
@@ -33,11 +36,11 @@ class App extends React.Component<{}, IState> {
 			
 		}     
 		
-		this.fetchMemes("")
-		this.selectNewMeme = this.selectNewMeme.bind(this)
+		this.fetchRecipes("")
+		this.selectNewRecipe = this.selectNewRecipe.bind(this)
 		this.handleFileUpload = this.handleFileUpload.bind(this)
-		this.fetchMemes = this.fetchMemes.bind(this)
-		this.uploadMeme = this.uploadMeme.bind(this)
+		this.fetchRecipes = this.fetchRecipes.bind(this)
+		this.uploadrecipe = this.uploadrecipe.bind(this)
 		this.authenticate = this.authenticate.bind(this)
 	}
 
@@ -65,37 +68,37 @@ class App extends React.Component<{}, IState> {
 				<div>
 					<div className="header-wrapper">
 						<div className="container header">
-							<img src={PatrickLogo} height='40' />&nbsp; My Meme Bank - MSA 2018 &nbsp;
-					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add Meme</div>
+							<img src={PatrickLogo} height='40' />&nbsp; My recipe Bank - MSA 2018 &nbsp;
+					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add recipe</div>
 						</div>
 					</div>
 					<div className="container">
 						<div className="row">
 							{/* <div className="col-7">
-								<MemeDetail currentMeme={this.state.currentMeme} />
+								<recipeDetail currentrecipe={this.state.currentrecipe} />
 							</div> */}
 							<div >
-								<MemeList memes={this.state.memes} selectNewMeme={this.selectNewMeme} searchByTag={this.fetchMemes} />
+								<RecipeList recipes={this.state.recipes} selectNewRecipe={this.selectNewRecipe} searchByTag={this.fetchRecipes} />
 							</div>
 						</div>
 					</div>
 					<Modal open={open} onClose={this.onCloseModal}>
 						<form>
 							<div className="form-group">
-								<label>Meme Title</label>
-								<input type="text" className="form-control" id="meme-title-input" placeholder="Enter Title" />
-								<small className="form-text text-muted">You can edit any meme later</small>
+								<label>recipe Title</label>
+								<input type="text" className="form-control" id="recipe-title-input" placeholder="Enter Title" />
+								<small className="form-text text-muted">You can edit any recipe later</small>
 							</div>
 							<div className="form-group">
 								<label>Tag</label>
-								<input type="text" className="form-control" id="meme-tag-input" placeholder="Enter Tag" />
+								<input type="text" className="form-control" id="recipe-tag-input" placeholder="Enter Tag" />
 								<small className="form-text text-muted">Tag is used for search</small>
 							</div>
 							<div className="form-group">
 								<label>Image</label>
-								<input type="file" onChange={this.handleFileUpload} className="form-control-file" id="meme-image-input" />
+								<input type="file" onChange={this.handleFileUpload} className="form-control-file" id="recipe-image-input" />
 							</div>
-							<button type="button" className="btn" onClick={this.uploadMeme}>Upload</button>
+							<button type="button" className="btn" onClick={this.uploadrecipe}>Upload</button>
 						</form>
 					</Modal>
 				</div>
@@ -158,16 +161,16 @@ class App extends React.Component<{}, IState> {
 		this.setState({ open: false });
 	};
 	
-	// Change selected meme
-	private selectNewMeme(newMeme: any) {
+	// Change selected recipe
+	private selectNewRecipe(newRecipe: any) {
 		this.setState({
-			currentMeme: newMeme
+			currentRecipe: newRecipe
 		})
 	}
 
-	// GET memes
-	private fetchMemes(tag: any) {
-		let url = "http://phase2apitest.azurewebsites.net/api/meme"
+	// GET recipes
+	private fetchRecipes(tag: any) {
+		let url = "https://apimyrecipe.azurewebsites.net/api/recipes"
 		if (tag !== "") {
 			url += "/tag?=" + tag
 		}
@@ -176,13 +179,13 @@ class App extends React.Component<{}, IState> {
         })
         .then(res => res.json())
         .then(json => {
-			let currentMeme = json[0]
-			if (currentMeme === undefined) {
-				currentMeme = {"id":0, "title":"No memes (╯°□°）╯︵ ┻━┻","url":"","tags":"try a different tag","uploaded":"","width":"0","height":"0"}
+			let currentRecipe = json[0]
+			if (currentRecipe === undefined) {
+				currentRecipe = {"id":0, "title":"No recipes (╯°□°）╯︵ ┻━┻","url":"","tags":"try a different tag","uploaded":"","width":"0","height":"0"}
 			}
 			this.setState({
-				currentMeme,
-				memes: json
+				currentRecipe,
+				recipes: json
 			})
         });
 	}
@@ -194,10 +197,10 @@ class App extends React.Component<{}, IState> {
 		})
 	}
 
-	// POST meme
-	private uploadMeme() {
-		const titleInput = document.getElementById("meme-title-input") as HTMLInputElement
-		const tagInput = document.getElementById("meme-tag-input") as HTMLInputElement
+	// POST recipe
+	private uploadrecipe() {
+		const titleInput = document.getElementById("recipe-title-input") as HTMLInputElement
+		const tagInput = document.getElementById("recipe-tag-input") as HTMLInputElement
 		const imageFile = this.state.uploadFileList[0]
 
 		if (titleInput === null || tagInput === null || imageFile === null) {
@@ -206,7 +209,7 @@ class App extends React.Component<{}, IState> {
 
 		const title = titleInput.value
 		const tag = tagInput.value
-		const url = "http://phase2apitest.azurewebsites.net/api/meme/upload"
+		const url = "https://apimyrecipe.azurewebsites.net/api/recipes/upload"
 
 		const formData = new FormData()
 		formData.append("Title", title)
