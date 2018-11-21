@@ -1,0 +1,14 @@
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\bin\Debug\netcoreapp2.1\MyRecipes.deps.json
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\bin\Debug\netcoreapp2.1\MyRecipes.runtimeconfig.json
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\bin\Debug\netcoreapp2.1\MyRecipes.runtimeconfig.dev.json
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\bin\Debug\netcoreapp2.1\MyRecipes.dll
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\bin\Debug\netcoreapp2.1\MyRecipes.pdb
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.csprojAssemblyReference.cache
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.csproj.CoreCompileInputs.cache
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.RazorAssemblyInfo.cache
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.RazorAssemblyInfo.cs
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.AssemblyInfoInputs.cache
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.AssemblyInfo.cs
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.RazorTargetAssemblyInfo.cache
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.dll
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\MyRecipes\MyRecipes\obj\Debug\netcoreapp2.1\MyRecipes.pdb
