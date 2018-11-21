@@ -4,12 +4,20 @@ body{
   
 }
 
+.body{
+  align-items: center;
+}
+
 /* Header */
 .header-wrapper {
   background-color: #fafafa;
   border-bottom: 1px solid #eeeeee;
   width: 100%;
   height: 60px;
+}
+
+button:focus, input[type="button"]:focus {
+  outline: none;
 }
 
 .header {
@@ -20,6 +28,15 @@ body{
   font-weight: bold;
   position: relative;
   padding-top: 10px;
+}
+
+.container{
+  display:block;
+  width: 95%;
+  margin: 20px auto;
+  padding: 10px;
+  align-self: center;
+  align-content: center;
 }
 
 /* Selected recipe */
@@ -60,15 +77,6 @@ body{
   margin-top: 0px;
 }
 
-.recipe-done-button {
-  display: flex;
-  align-items: left;
-  justify-content: left;
-  font-weight: normal;
-  font-size: 20px;
-  margin-top: 20px;
-}
-
 .btn-action{
   font-family: Helvetica;
   background-color:#f5a623;
@@ -86,26 +94,15 @@ body{
   border-color: #d18c1b;
 }
 
-.btn-add {
-  position: absolute;
-  right: 0px;
-}
-
 /* recipe List */
 .recipe-list-wrapper {
   padding-top:20px;
 }
 
-.recipe-list-table {
-  margin-top: 20px;
-  height: calc(100vh - 140px);
-  overflow-y: scroll;
-  cursor: pointer;
-}
 
 .search-button:hover {
-  background-color: #d18c1b;
-  border-color: #d18c1b;
+  background-color: #ff483b;
+  border-color: #ff483b;
   color: white;
 }
 
@@ -115,16 +112,16 @@ body{
   float:right;
   min-height: 75vh;
   white-space:normal;
-  overflow-x: scroll;
   margin-top:10px;
 }
 .card-header{
-  height: 250px;
+  min-height: 250px;
 }
   .card {
     margin: 10px 10px;
     display: inline-block;
-    width:350px;
+    width:30%;
+    min-width: 350px;
     min-height: 300px;
   }
     .card-body {
@@ -132,14 +129,63 @@ body{
   }
 
   .card-tags{
-    color: #eeeeee;
+    color: white;
+    font-family: "Comic Sans MS", cursive, sans-serif;
     display: inline-block;
     height: auto;
-    background-color: rgba(0, 123, 238, 0.596);
+    background-color: rgba(255, 0, 0, 0.555);
     padding: 4px 8px 3px 9px;
     border-radius: 10px;
   }
 
+  .add-button {
+    display: block; /* Hidden by default */
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive, sans-serif;;
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #d32a00; /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 15px; /* Rounded corners */
+    font-size: 18px; /* Increase font size */
+}
+
+.add-button:hover {
+  background-color: rgb(255, 217, 217); /* Add a dark-grey background on hover */
+  color:black;
+}
+
+.find-button {
+  background-color: white; 
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+  color: #ff3f0f; 
+  border: 2px solid #ff3f0f;
+  border-radius: 10px;
+  padding:5px 10px 5px 10px;
+}
+
+.find-button:hover {
+  background-color: #ff3f0f;
+  color: white;
+}
+
+h3{
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 32px;
+  font-weight: bold;
+}
+.body-content{
+  font-style: italic;
+  font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 18px;
+  color: #5e5454;
+}
 
 
 

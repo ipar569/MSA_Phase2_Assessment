@@ -16,8 +16,8 @@ export default class RecipeList extends React.Component<IProps, {}> {
 
 	public render() {
 		return (
-			<div className="container meme-list-wrapper">
-                <div className="row meme-list-heading">
+			<div>
+                <div className="row">
                     <div className="input-group">
                         <input type="text" id="search-tag-textbox" className="form-control" placeholder="Search By Tags" />
                         <div className="input-group-append">
@@ -49,7 +49,7 @@ export default class RecipeList extends React.Component<IProps, {}> {
     private createCard(recipe:any){
         const style = { 
             backgroundImage: 'url(' + recipe.url + ')',
-            backgroundSize: '100% calc(100vh - 220px)'
+            backgroundSize: '100%'
             
         };
         return (
@@ -60,10 +60,12 @@ export default class RecipeList extends React.Component<IProps, {}> {
         </header>
          <div className="card-body">
      
-             <h2>{recipe.name}</h2>
+                <h3>{recipe.name}</h3>
      
                 <p className="body-content">{recipe.overview}</p>
-     
+                <button className="find-button">
+                    Find out more
+                </button>
         </div>
      </article>
         )

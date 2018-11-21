@@ -1,10 +1,10 @@
+
 import * as React from 'react';
 import Modal from 'react-responsive-modal';
 // import * as Webcam from "react-webcam";
 import './App.css';
 // import MemeDetail from './components/MemeDetail';
 import RecipeList from './components/RecipeList';
-import PatrickLogo from './patrick-logo.png';
 
 
 interface IState {
@@ -46,6 +46,7 @@ class App extends React.Component<{}, IState> {
 
 	public render() {
 		const { open } = this.state;
+		
 		// const { authenticated } = this.state
 		return (
 			<div>
@@ -65,11 +66,12 @@ class App extends React.Component<{}, IState> {
 
 
 				{/* {(authenticated) ?	 */}
-				<div>
+				<div className="body">
 					<div className="header-wrapper">
-						<div className="container header">
-							<img src={PatrickLogo} height='40' />&nbsp; My recipe Bank - MSA 2018 &nbsp;
-					<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add recipe</div>
+						<div className="header">
+							&nbsp;Hungry Tonight &nbsp;
+					{/*<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add recipe</div>*/}
+					
 						</div>
 					</div>
 					<div className="container">
@@ -81,6 +83,9 @@ class App extends React.Component<{}, IState> {
 								<RecipeList recipes={this.state.recipes} selectNewRecipe={this.selectNewRecipe} searchByTag={this.fetchRecipes} />
 							</div>
 						</div>
+						<button aria-label="Add" className="add-button" onClick={this.onOpenModal}>
+        				Add New Recipe
+      					</button>	
 					</div>
 					<Modal open={open} onClose={this.onCloseModal}>
 						<form>
@@ -101,9 +106,11 @@ class App extends React.Component<{}, IState> {
 							<button type="button" className="btn" onClick={this.uploadrecipe}>Upload</button>
 						</form>
 					</Modal>
+					
 				</div>
+				
 				{/* : ""} */}
-
+							
 		</div>
 		);
 	}
