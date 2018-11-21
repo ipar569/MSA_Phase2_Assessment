@@ -40,7 +40,7 @@ class App extends React.Component<{}, IState> {
 		this.selectNewRecipe = this.selectNewRecipe.bind(this)
 		this.handleFileUpload = this.handleFileUpload.bind(this)
 		this.fetchRecipes = this.fetchRecipes.bind(this)
-		this.uploadrecipe = this.uploadrecipe.bind(this)
+		this.uploadRecipe = this.uploadRecipe.bind(this)
 		this.authenticate = this.authenticate.bind(this)
 	}
 
@@ -89,36 +89,45 @@ class App extends React.Component<{}, IState> {
 					</div>
 					<Modal open={open} onClose={this.onCloseModal}>
 						<form>
+							<div>
+								<h1 className="add-header">Add New Recipe</h1>
+								<hr />
+							</div>
 							<div className="form-group">
 								<label>Recipe Name</label>
 								<input type="text" className="form-control" id="recipe-name-input" placeholder="Enter Name of the Dish" />
 								<small className="form-text text-muted">You can edit any recipe later</small>
+								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
 								<label>Cusine/Tag</label>
 								<input type="text" className="form-control" id="recipe-tag-input" placeholder="Enter " />
 								<small className="form-text text-muted">Tag/Cuisine is used for search and identification</small>
+								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
 								<label>Overview</label>
 								<input type="text" className="form-control" id="recipe-overview-input" placeholder="Enter " />
 								<small className="form-text text-muted">Please describe the overview of the dish</small>
+								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
 								<label>Ingridients</label>
 								<input type="text" className="form-control" id="recipe-ingridients-input" placeholder="Enter " />
 								<small className="form-text text-muted">You can edit any recipe late</small>
+								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
 								<label>Description</label>
 								<input type="text" className="form-control" id="recipe-description-input" placeholder="Enter " />
 								<small className="form-text text-muted">You can edit any recipe late</small>
+								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
 								<label>Image</label>
 								<input type="file" onChange={this.handleFileUpload} className="form-control-file" id="recipe-image-input" />
 							</div>
-							<button type="button" className="btn" onClick={this.uploadrecipe}>Upload</button>
+							<button type="button" className="find-button bold" onClick={this.uploadRecipe}>Upload</button>
 						</form>
 					</Modal>
 					
@@ -220,23 +229,34 @@ class App extends React.Component<{}, IState> {
 	}
 
 	// POST recipe
-	private uploadrecipe() {
-		const titleInput = document.getElementById("recipe-title-input") as HTMLInputElement
+	private uploadRecipe() {
+		const nameInput = document.getElementById("recipe-name-input") as HTMLInputElement
 		const tagInput = document.getElementById("recipe-tag-input") as HTMLInputElement
+		const overviewInput = document.getElementById("recipe-overview-input") as HTMLInputElement
+		const ingridientsInput = document.getElementById("recipe-ingridients-input") as HTMLInputElement
+		const descriptionInput = document.getElementById("recipe-description-input") as HTMLInputElement
 		const imageFile = this.state.uploadFileList[0]
 
-		if (titleInput === null || tagInput === null || imageFile === null) {
+		if (nameInput === null || tagInput === null ||overviewInput === null ||ingridientsInput === null ||descriptionInput === null || imageFile === null) {
+			alert("Please fill in the empty input field!!")
 			return;
 		}
 
-		const title = titleInput.value
+		const name = nameInput.value
 		const tag = tagInput.value
+		const overview = overviewInput.value
+		const ingridients = ingridientsInput.value
+		const description = descriptionInput.value
 		const url = "https://apimyrecipe.azurewebsites.net/api/recipes/upload"
 
 		const formData = new FormData()
-		formData.append("Title", title)
+		formData.append("Name", name)
 		formData.append("Tags", tag)
-		formData.append("image", imageFile)
+		formData.append("Author", "admin")
+		formData.append("Overview", overview)
+		formData.append("Ingridients", ingridients)
+		formData.append("Description", description)
+		formData.append("Image", imageFile)
 
 		fetch(url, {
 			body: formData,

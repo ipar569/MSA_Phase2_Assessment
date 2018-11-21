@@ -99,6 +99,30 @@ button:focus, input[type="button"]:focus {
   padding-top:20px;
 }
 
+.add-header{
+  font-size:24px;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-weight: bold;
+  color:#ff483b;
+  margin-bottom: -15px;
+}
+
+hr{
+  border: 2px solid #ff483b;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.add-hr{
+  border: 1.5px solid #ffa69f;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: -15px;
+}
+
 .form-group label{
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
   font-weight: bold;
