@@ -5,6 +5,7 @@ import FacebookIcon from "./FB-Share-icon.png";
 
 interface IProps {
     currentRecipe: any
+    user:any
 }
 
 interface IState {
@@ -90,7 +91,11 @@ export default class EditRecipe extends React.Component<IProps, IState> {
         
     }
     private onOpenModal = () => {
+        if(this.props.user===this.props.currentRecipe.author){
         this.setState({ open: true });
+        }else{
+            alert("You are not the owner of the recipe so you cannot edit the recipe!!")
+        }
       };
       
     
@@ -112,7 +117,11 @@ export default class EditRecipe extends React.Component<IProps, IState> {
     };
 
     private onOpenDelModal = () => {
-        this.setState({ openConfirmDel: true });
+        if(this.props.user===this.props.currentRecipe.author){
+            this.setState({ openConfirmDel: true });
+            }else{
+                alert("You are not the owner of the recipe so you cannot edit the recipe!!")
+            }
       };
       
     

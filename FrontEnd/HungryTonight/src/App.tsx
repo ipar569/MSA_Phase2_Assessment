@@ -1,14 +1,12 @@
 
 import * as React from 'react';
 import Modal from 'react-responsive-modal';
-// import * as Webcam from "react-webcam";
+import * as Webcam from "react-webcam";
 import './App.css';
 // import MemeDetail from './components/MemeDetail';
 import RecipeList from './components/RecipeList';
 import EditRecipe from './EditRecipe'
 import Logo from './logo.png';
-
-
 
 interface IState {
 	currentRecipe: any,
@@ -19,6 +17,7 @@ interface IState {
 	recipes: any[],
 	
 	uploadFileList: any,
+	user:any;
 	authenticated: boolean,
 	refCamera: any
 	predictionResult: any
@@ -37,9 +36,7 @@ class App extends React.Component<{}, IState> {
 			recipes: [],
 			refCamera: React.createRef(),
 			uploadFileList: null,
-			
-			
-			
+			user:null
 		}     
 		
 		this.fetchRecipes("")
@@ -53,25 +50,34 @@ class App extends React.Component<{}, IState> {
 	public render() {
 		const { open, openRecipe } = this.state;
 		const recipe = this.state.currentRecipe;
-		// const { authenticated } = this.state
+		const { authenticated } = this.state
 		return (
 			<div>
 
-				{/* {(!authenticated) ?
+				 {(!authenticated) ?
 					<Modal open={!authenticated} onClose={this.authenticate} closeOnOverlayClick={false} showCloseIcon={false} center={true}>
+						<div className="start-logo">
+							<img className="start-img" src={Logo} height='150' />
+						</div>
 						<Webcam
+						className="webcam"
 							audio={false}
 							screenshotFormat="image/jpeg"
 							ref={this.state.refCamera}
+							width="400px"
+							height="300px"
+							
 						/>
-						<div className="row nav-row">
-							<div className="btn btn-primary bottom-button" onClick={this.authenticate}>Login</div>
+						<div className="login">
+							<input type="text" className="form-control" id="user-input" placeholder="Enter ID" />
+							<button className="find-button" onClick={this.authenticate}>Login</button>	
+							
 						</div>
-					</Modal> : ""} */}
+					</Modal> : ""} 
 
 
 
-				{/* {(authenticated) ?	 */}
+				 {(authenticated) ?	 
 				<div className="body">
 					<div className="header-wrapper">
 						<div className="header">
@@ -151,22 +157,27 @@ class App extends React.Component<{}, IState> {
 							<div className="description">
 							<h5>Method</h5>
 							{recipe.description}</div>
-							<EditRecipe currentRecipe={recipe}/>
+							<EditRecipe currentRecipe={recipe} user={this.state.user}/>
 						</form>
 					</Modal>
 					
 				</div>
 				
-				{/* : ""} */}
+				 : ""} 
 							
 		</div>
 		);
 	}
 	
-	
 	// Call custom vision model
 	private getFaceRecognitionResult(image: any) {
-		const url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/7bce860c-db89-4fc8-abb3-3143c0354af0/image?iterationId=51421a18-ab66-46ca-8936-248b65f76a20"
+		const idInput = document.getElementById("user-input") as HTMLInputElement
+		const idToAuthenticate = idInput.value
+
+		if(idToAuthenticate===""){
+			alert("Please enter your ID")
+		}else{
+		const url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v2.0/Prediction/33168de4-c06a-4fee-913e-efa91d4f723c/image?iterationId=e37f39ae-0dab-4859-b178-88c256f3659b"
 		if (image === null) {
 			return;
 		}
@@ -189,8 +200,9 @@ class App extends React.Component<{}, IState> {
 						console.log(json.predictions[0])
 
 						this.setState({predictionResult: json.predictions[0] })
-						if (this.state.predictionResult.probability > 0.7) {
+						if (this.state.predictionResult.probability > 0.7 && idToAuthenticate===this.state.predictionResult.tagName) {
 							this.setState({authenticated: true})
+							this.setState({user:idToAuthenticate})
 						} else {
 							this.setState({authenticated: false})
 						console.log(json.predictions[0].tagName)
@@ -198,6 +210,7 @@ class App extends React.Component<{}, IState> {
 					})
 				}
 			})
+		}
 	}
 
 	// Authenticate
@@ -243,7 +256,7 @@ class App extends React.Component<{}, IState> {
         .then(json => {
 			let currentRecipe = json[0]
 			if (currentRecipe === undefined) {
-				currentRecipe = {"id":0, "title":"No recipes (╯°□°）╯︵ ┻━┻","url":"","tags":"try a different tag","uploaded":"","width":"0","height":"0"}
+				currentRecipe = {"id":0, "title":"No Recipe!!","url":"","tags":"try a different tag","uploaded":"","width":"0","height":"0"}
 			}
 			this.setState({
 				currentRecipe,

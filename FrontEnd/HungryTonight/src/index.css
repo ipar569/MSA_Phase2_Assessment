@@ -4,6 +4,11 @@ body{
   
 }
 
+.start-logo{
+  text-align: center;
+  margin:10px;
+}
+
 .body{
   align-items: center;
 }
@@ -203,7 +208,19 @@ h6{
   color: white;
 }
 
+.webcam{
+  border-radius: 10px;
+}
+.login{
+  margin: 0px;
+}
+
+.login button{
+  margin-top:10px;
+}
+
 .app-card-list {
+  text-align: center;
   display:inline-block;
   justify-content: center;
   align-content: center;
