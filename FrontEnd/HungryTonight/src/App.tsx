@@ -5,6 +5,7 @@ import Modal from 'react-responsive-modal';
 import './App.css';
 // import MemeDetail from './components/MemeDetail';
 import RecipeList from './components/RecipeList';
+import EditRecipe from './EditRecipe'
 
 
 interface IState {
@@ -12,6 +13,7 @@ interface IState {
 
 	open: boolean,
 	openRecipe: boolean,
+	// openEdit: boolean,
 	recipes: any[],
 	
 	uploadFileList: any,
@@ -27,6 +29,7 @@ class App extends React.Component<{}, IState> {
 			authenticated: false,
 			currentRecipe: {"id":0, "title":"Loading ","url":"","tags":"⚆ _ ⚆","uploaded":"","width":"0","height":"0"},
 			open: false,
+			// openEdit:false,
 			openRecipe: false,
 			predictionResult: null,
 			recipes: [],
@@ -88,6 +91,7 @@ class App extends React.Component<{}, IState> {
         				Add New Recipe
       					</button>	
 					</div>
+					{/* Modal for adding new recipe*/ }
 					<Modal open={open} onClose={this.onCloseModal}>
 						<form>
 							<div>
@@ -131,14 +135,26 @@ class App extends React.Component<{}, IState> {
 							<button type="button" className="find-button bold" onClick={this.uploadRecipe}>Upload</button>
 						</form>
 					</Modal>
+					{/* Modal to show individual recipe menu*/ }
 					<Modal open={openRecipe} onClose={this.onCloseModal}>
 						<form>
 							<div>
 								<h1 className="add-header">{recipe.name}</h1>
 								<hr />
+								<h6>Author: {recipe.author}</h6>
 							</div>
+							
 							<img className='single-image' src={recipe.url}/>
-							<button type="button" className="find-button bold" onClick={this.uploadRecipe}>Upload</button>
+	
+							<div className="overview">"{recipe.overview}"</div>
+							<div className="ingridients">
+							<h5>Ingridients Needed</h5>
+							{recipe.ingridients}
+							</div>
+							<div className="description">
+							<h5>Method</h5>
+							{recipe.description}</div>
+							<EditRecipe currentRecipe={recipe}/>
 						</form>
 					</Modal>
 					
@@ -149,7 +165,7 @@ class App extends React.Component<{}, IState> {
 		</div>
 		);
 	}
-
+	
 	
 	// Call custom vision model
 	private getFaceRecognitionResult(image: any) {
@@ -200,11 +216,16 @@ class App extends React.Component<{}, IState> {
 	
 	// Modal close
 	private onCloseModal = () => {
-		this.setState({ open: false,openRecipe:false });
+		this.setState({ open: false,openRecipe:false});
 	};
+
+	// private onCloseEditModal = () => {
+	// 	this.setState({ openEdit:false });
+	// };
 	
 	// Change selected recipe
 	private selectNewRecipe(newRecipe: any) {
+		newRecipe.description = newRecipe.description.replace("\n","\n\n")
 		this.setState({
 			
 			currentRecipe: newRecipe,

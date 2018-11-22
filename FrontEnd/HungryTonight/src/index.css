@@ -129,6 +129,48 @@ hr{
   border-radius: 5px;
 }
 
+.overview{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-style: italic;
+  font-size:20px;
+  margin-top:20px;
+  margin-bottom:10px;
+  align-self: right;
+  text-align: center;
+}
+
+.ingridients{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  display: block;
+  margin: 10px;
+  background-color: #ffe3e1;
+  font-size: 16px;
+  padding:10px;
+  border-radius: 10px;
+}
+
+.description{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  margin:10px;
+  font-size: 16px;
+}
+
+h5{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom:0px;
+}
+
+h6{
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-size: 16px;
+  margin-top:-15px;
+  font-style: italic;
+  font-weight: bold;
+}
+
 .add-hr{
   border: 1.5px solid #ffa69f;
   margin-left: 10px;
