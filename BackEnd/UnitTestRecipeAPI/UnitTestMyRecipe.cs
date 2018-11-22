@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
 using System.Threading.Tasks;
+using System;
 
 namespace UniteTestMyRecipe
 {
@@ -44,7 +45,7 @@ namespace UniteTestMyRecipe
         }
 
         [TestMethod]
-        public async Task TestPutMemeItemNoContentStatusCode()
+        public async Task TestPutRecipeNoContentStatusCode()
         {
             using (var context = new MyRecipesContext(options))
             {
@@ -79,6 +80,38 @@ namespace UniteTestMyRecipe
 
                 // Then
                 recipe1 = context.Recipe.Where(x => x.Name == name).Single();
+            }
+        }
+
+        [TestMethod]
+        public async Task TestGetRecipe()
+        {
+            using (var context = new MyRecipesContext(options))
+            {
+                string name = "getRecipe";
+                Recipe recipe1 = context.Recipe.Where(x => x.Name == recipeNames[0]).Single();
+                recipe1.Name = name;
+                RecipesController recipeController = new RecipesController(context, configuration);
+                var okResult = recipeController.GetRecipe();
+
+                // Assert
+                Assert.IsNotNull(okResult);
+                Assert.IsInstanceOfType(okResult, typeof(IEnumerable<Recipe>));
+            }
+        }
+
+        [TestMethod]
+        public async Task TestGetRecipeTag()
+        {
+            using (var context = new MyRecipesContext(options))
+            {
+            
+                RecipesController recipeController = new RecipesController(context, configuration);
+                var result = await recipeController.GetTagsRecipe("");
+
+                // Assert
+                Assert.IsNotNull(result);
+                Assert.IsInstanceOfType(result, typeof(List<Recipe>));
             }
         }
 
@@ -132,6 +165,8 @@ namespace UniteTestMyRecipe
             }
         }
 
+
+
         [TestMethod]
         public async Task TestDeleteFailRecipe()
         {
@@ -148,6 +183,62 @@ namespace UniteTestMyRecipe
             }
         }
 
+        [TestMethod]
+        public async Task TestPostRecipeAlreadyExist()
+        {
+            using (var context = new MyRecipesContext(options))
+            {
+                string name = "postRecipe";
+                Recipe recipe1 = context.Recipe.Where(x => x.Name == recipeNames[0]).Single();
+                recipe1.Name = name;
+                try
+                {
+                    RecipesController recipeController = new RecipesController(context, configuration);
+                    IActionResult okResult = await recipeController.PostRecipe(recipe1) as IActionResult;
+                }
+                catch (Exception e)
+                {
+                    // Assert
+                    Assert.IsInstanceOfType(e,typeof(ArgumentException));
+                }
+            }
+        }
+
+        public async Task TestUploadFileFail()
+        {
+            using (var context = new MyRecipesContext(options))
+            {
+                RecipeImage image = new RecipeImage();
+                try
+                {
+                    RecipesController recipeController = new RecipesController(context, configuration);
+                    IActionResult okResult = await recipeController.UploadRecipe(image) as IActionResult;
+                }
+                catch (Exception e)
+                {
+                    // Assert
+                    Assert.IsInstanceOfType(e, typeof(ArgumentException));
+                }
+            }
+        }
+
+        [TestMethod]
+        public async Task TestPostRecipe()
+        {
+            using (var context = new MyRecipesContext(options))
+            {
+                Recipe recipe = new Recipe();
+
+                
+                    RecipesController recipeController = new RecipesController(context, configuration);
+                    IActionResult okResult = await recipeController.PostRecipe(recipe) as IActionResult;
+
+
+                // Assert
+                Assert.IsNotNull(okResult);
+                Assert.IsInstanceOfType(okResult, typeof(CreatedAtActionResult));
+            }
+        }
 
         [TestCleanup]
         public void ClearDb()
