@@ -57,7 +57,7 @@ namespace MyRecipes.Controllers
 
         [HttpGet]
         [Route("tag")]
-        public async Task<List<Recipe>> GetTagsItem([FromQuery] string tags)
+        public async Task<List<Recipe>> GetTagsRecipe([FromQuery] string tags)
         {
             var recipe = from m in _context.Recipe
                         select m; //get all the memes
@@ -109,7 +109,7 @@ namespace MyRecipes.Controllers
         }
 
         [HttpPost, Route("upload")]
-        public async Task<IActionResult> UploadFile([FromForm]RecipeImage recipe)
+        public async Task<IActionResult> UploadRecipe([FromForm]RecipeImage recipe)
         {
             if (!MultipartRequestHelper.IsMultipartContentType(Request.ContentType))
             {

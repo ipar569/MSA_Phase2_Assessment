@@ -1,0 +1,17 @@
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\UnitTestRecipeAPI.deps.json
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\UnitTestRecipeAPI.runtimeconfig.json
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\UnitTestRecipeAPI.runtimeconfig.dev.json
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\UnitTestRecipeAPI.dll
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\MyRecipes.dll
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\MyRecipes.pdb
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\obj\Debug\netcoreapp2.1\UnitTestRecipeAPI.csprojAssemblyReference.cache
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\obj\Debug\netcoreapp2.1\UnitTestRecipeAPI.csproj.CoreCompileInputs.cache
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\obj\Debug\netcoreapp2.1\UnitTestRecipeAPI.AssemblyInfoInputs.cache
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\obj\Debug\netcoreapp2.1\UnitTestRecipeAPI.AssemblyInfo.cs
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\obj\Debug\netcoreapp2.1\UnitTestRecipeAPI.csproj.CopyComplete
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\bin\Debug\netcoreapp2.1\UnitTestRecipeAPI.pdb
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\obj\Debug\netcoreapp2.1\UnitTestRecipeAPI.dll
+C:\Users\injae\Desktop\2018\MSA\MSA_phase2\MSA_Phase2_Assessment\BackEnd\UnitTestRecipeAPI\obj\Debug\netcoreapp2.1\UnitTestRecipeAPI.pdb
