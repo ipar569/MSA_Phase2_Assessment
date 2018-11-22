@@ -28,9 +28,9 @@ export default class EditRecipe extends React.Component<IProps, IState> {
         const currentRecipe = this.props.currentRecipe
         const { open } = this.state;
 		return (
-			<div className="container Recipe-wrapper">
+			<div className="container">
                 
-                <div className="row Recipe-done-button">
+                <div className="right-container">
                     <button type="button" className="find-button bold" onClick={this.onOpenModal}>Edit</button>
 					<button type="button" className="find-button bold" onClick={this.onOpenDelModal}>Delete</button>
                 </div>
@@ -49,34 +49,35 @@ export default class EditRecipe extends React.Component<IProps, IState> {
 							<div className="form-group">
 								<label>Overview</label>
 								<input type="text" className="form-control" id="recipe-overview-edit" defaultValue={currentRecipe.overview} />
-								<small className="form-text text-muted">Please describe the overview of the dish</small>
 								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
 								<label>Ingridients</label>
 								<input type="text" className="form-control" id="recipe-ingridients-edit" defaultValue={currentRecipe.ingridients} />
-								<small className="form-text text-muted">You can edit any recipe late</small>
+
 								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
 								<label>Description</label>
 								<input type="text" className="form-control" id="recipe-description-edit" defaultValue={currentRecipe.description} />
-								<small className="form-text text-muted">You can edit any recipe late</small>
+								
 
-							</div>
-							<button type="button" className="find-button bold" onClick={this.onOpenConModal}>Edit</button>
+							</div><div className="right-container"><button type="button" className="find-button bold toLeft" onClick={this.onOpenConModal}>Edit</button></div>
+							
                 </Modal>
                 <Modal open={this.state.openConfirm} onClose={this.onCloseConModal}>
-                    <h3>Are you sure about this?</h3>
+                    <h3 className="up">Are you sure about this?</h3>
+                    <div className="confirm">
                     <button type="button" className="find-button bold" onClick={this.editRecipe}>Edit</button>
                     <button type="button" className="find-button bold" onClick={this.onCloseConModal}>Cancel</button>
-					
+					</div>
                 </Modal>
                 <Modal open={this.state.openConfirmDel} onClose={this.onCloseDelModal}>
-                    <h3>Are you sure about this?</h3>
+                    <h3 className="up">Are you sure about this?</h3>
+                    <div className="confirm">
                     <button type="button" className="find-button bold" onClick={this.deleteRecipe.bind(this,currentRecipe.id)}>Delete</button>
                     <button type="button" className="find-button bold" onClick={this.onCloseDelModal}>Cancel</button>
-					
+					</div>
                 </Modal>
             </div>
         );

@@ -53,6 +53,26 @@ namespace MyRecipes.Controllers
             return Ok(recipe);
         }
 
+        // GET: api/Meme/Tags
+
+        [HttpGet]
+        [Route("tag")]
+        public async Task<List<Recipe>> GetTagsItem([FromQuery] string tags)
+        {
+            var recipe = from m in _context.Recipe
+                        select m; //get all the memes
+
+
+            if (!String.IsNullOrEmpty(tags)) //make sure user gave a tag to search
+            {
+                recipe = recipe.Where(s => s.Tags.ToLower().Contains(tags.ToLower())); // find the entries with the search tag and reassign
+            }
+
+            var returned = await recipe.ToListAsync(); //return the memes
+
+            return returned;
+        }
+
         // PUT: api/Recipes/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutRecipe([FromRoute] int id, [FromBody] Recipe recipe)

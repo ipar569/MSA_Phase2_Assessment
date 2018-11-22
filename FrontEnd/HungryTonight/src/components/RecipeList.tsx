@@ -22,16 +22,17 @@ export default class RecipeList extends React.Component<IProps, {}> {
 	public render() {
 		return (
 			<div>
-                <div className="row">
-                    <div className="input-group">
+
+                    <div className="input-group search">
                         <input type="text" id="search-tag-textbox" className="form-control" placeholder="Search By Tags" />
                         <div className="input-group-append">
                             <div className="btn btn-outline-secondary search-button" onClick = {this.searchByTag}>Search</div>
                         </div>
                     </div>  
-                </div>
+
                 <div className="app-card-list" id="app-card-list">
-                {this.createCardsList()}
+                <div className="center">{this.createCardsList()}</div>
+                
                 </div>
             </div>
 		);

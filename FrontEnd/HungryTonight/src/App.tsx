@@ -6,6 +6,7 @@ import './App.css';
 // import MemeDetail from './components/MemeDetail';
 import RecipeList from './components/RecipeList';
 import EditRecipe from './EditRecipe'
+import Logo from './logo.png';
 
 
 interface IState {
@@ -73,20 +74,16 @@ class App extends React.Component<{}, IState> {
 				<div className="body">
 					<div className="header-wrapper">
 						<div className="header">
-							&nbsp;Hungry Tonight &nbsp;
+						<img src={Logo} height='80' />
 					{/*<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add recipe</div>*/}
 					
 						</div>
 					</div>
 					<div className="container">
-						<div className="row">
-							{/* <div className="col-7">
-								<recipeDetail currentrecipe={this.state.currentrecipe} />
-							</div> */}
-							<div >
+				
 								<RecipeList recipes={this.state.recipes} selectNewRecipe={this.selectNewRecipe} searchByTag={this.fetchRecipes} />
-							</div>
-						</div>
+
+
 						<button aria-label="Add" className="add-button" onClick={this.onOpenModal}>
         				Add New Recipe
       					</button>	
@@ -101,7 +98,6 @@ class App extends React.Component<{}, IState> {
 							<div className="form-group">
 								<label>Recipe Name</label>
 								<input type="text" className="form-control" id="recipe-name-input" placeholder="Enter Name of the Dish" />
-								<small className="form-text text-muted">You can edit any recipe later</small>
 								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
@@ -119,13 +115,13 @@ class App extends React.Component<{}, IState> {
 							<div className="form-group">
 								<label>Ingridients</label>
 								<input type="text" className="form-control" id="recipe-ingridients-input" placeholder="Enter " />
-								<small className="form-text text-muted">You can edit any recipe late</small>
+								<small className="form-text text-muted">You can edit any recipe later</small>
 								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
 								<label>Description</label>
 								<input type="text" className="form-control" id="recipe-description-input" placeholder="Enter " />
-								<small className="form-text text-muted">You can edit any recipe late</small>
+								<small className="form-text text-muted">You can edit any recipe later</small>
 								<hr className="add-hr"/>
 							</div>
 							<div className="form-group">
