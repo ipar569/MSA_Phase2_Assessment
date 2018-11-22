@@ -57,7 +57,12 @@ button:focus, input[type="button"]:focus {
   font-weight: normal;
   font-size: 18px;
 }
-
+.facebook{
+  justify-self: end;
+  align-self: flex-end;
+  margin-top:-40px;
+  width:150px;
+}
 .recipe-img {
   margin-top: 10px;
   display: flex;
@@ -220,7 +225,7 @@ h6{
     display: inline-block;
     width:30%;
     justify-self: center;
-    min-width: 350px;
+    min-width: 340px;
     min-height: 300px;
   }
     .card-body {

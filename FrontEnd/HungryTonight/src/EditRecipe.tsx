@@ -1,5 +1,7 @@
 import * as React from "react";
 import Modal from 'react-responsive-modal';
+import {FacebookShareButton} from 'react-share';
+import FacebookIcon from "./FB-Share-icon.png";
 
 interface IProps {
     currentRecipe: any
@@ -29,8 +31,12 @@ export default class EditRecipe extends React.Component<IProps, IState> {
         const { open } = this.state;
 		return (
 			<div className="container">
+
                 
                 <div className="right-container">
+                <FacebookShareButton quote="recipe" url="www.injaepark.co.nz">
+                    <img src={FacebookIcon} className="facebook"/>
+                </FacebookShareButton>
                     <button type="button" className="find-button bold" onClick={this.onOpenModal}>Edit</button>
 					<button type="button" className="find-button bold" onClick={this.onOpenDelModal}>Delete</button>
                 </div>
