@@ -35,8 +35,8 @@ export default class EditRecipe extends React.Component<IProps, IState> {
 
                 
                 <div className="right-container">
-                <FacebookShareButton quote="recipe" url="www.injaepark.co.nz">
-                    <img src={FacebookIcon} className="facebook"/>
+                <FacebookShareButton quote="recipe" url="https://myrecipeinjaepark.azurewebsites.net">
+                    <img alt="Icon showing share button for Facebook" src={FacebookIcon} className="facebook"/>
                 </FacebookShareButton>
                     <button type="button" className="find-button bold" onClick={this.onOpenModal}>Edit</button>
 					<button type="button" className="find-button bold" onClick={this.onOpenDelModal}>Delete</button>

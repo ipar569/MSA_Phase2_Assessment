@@ -1,7 +1,7 @@
 
 import * as React from 'react';
 import Modal from 'react-responsive-modal';
-import * as Webcam from "react-webcam";
+ import * as Webcam from "react-webcam";
 import './App.css';
 // import MemeDetail from './components/MemeDetail';
 import RecipeList from './components/RecipeList';
@@ -51,25 +51,28 @@ class App extends React.Component<{}, IState> {
 		const { open, openRecipe } = this.state;
 		const recipe = this.state.currentRecipe;
 		const { authenticated } = this.state
+		const imgInfo = "image of "+recipe.name
 		return (
 			<div>
 
 				 {(!authenticated) ?
 					<Modal open={!authenticated} onClose={this.authenticate} closeOnOverlayClick={false} showCloseIcon={false} center={true}>
 						<div className="start-logo">
-							<img className="start-img" src={Logo} height='150' />
+							<img alt="Logo of the Website Hungry Tonight" className="start-img" src={Logo} width="75%" />
 						</div>
-						<Webcam
-						className="webcam"
+						 <Webcam
+							className="webcam"
 							audio={false}
 							screenshotFormat="image/jpeg"
 							ref={this.state.refCamera}
-							width="400px"
-							height="300px"
-							
-						/>
+							videoSource="user"
+
+						/> 
+						
 						<div className="login">
-							<input type="text" className="form-control" id="user-input" placeholder="Enter ID" />
+							<input type="text" className="form-control" id="user-input" placeholder="Enter ID" onKeyPress={this.handleKeyPress}/>
+							<input type="password" className="form-control" id="password-input" placeholder="Enter Password - You can leave it empty if you have access to the webcam!!" onKeyPress={this.handleKeyPress}/>
+							<a>*The password is only needed if you do not have access to the camera or webcam!!</a><br/>
 							<button className="find-button" onClick={this.authenticate}>Login</button>	
 							
 						</div>
@@ -81,14 +84,14 @@ class App extends React.Component<{}, IState> {
 				<div className="body">
 					<div className="header-wrapper">
 						<div className="header">
-						<img src={Logo} height='80' />
+						<img alt="the logo of the website, Hungry Tonight" src={Logo} height='80' />
 					{/*<div className="btn btn-primary btn-action btn-add" onClick={this.onOpenModal}>Add recipe</div>*/}
 					
 						</div>
 					</div>
 					<div className="container">
 				
-								<RecipeList recipes={this.state.recipes} selectNewRecipe={this.selectNewRecipe} searchByTag={this.fetchRecipes} />
+						<RecipeList recipes={this.state.recipes} selectNewRecipe={this.selectNewRecipe} searchByTag={this.fetchRecipes} />
 
 
 						<button aria-label="Add" className="add-button" onClick={this.onOpenModal}>
@@ -146,8 +149,8 @@ class App extends React.Component<{}, IState> {
 								<hr />
 								<h6>Author: {recipe.author}</h6>
 							</div>
-							
-							<img className='single-image' src={recipe.url}/>
+						
+							<img alt={imgInfo} className='single-image' src={recipe.url}/>
 	
 							<div className="overview">"{recipe.overview}"</div>
 							<div className="ingridients">
@@ -168,6 +171,13 @@ class App extends React.Component<{}, IState> {
 		</div>
 		);
 	}
+
+
+	private handleKeyPress = (event:any) => {
+        if (event.key === 'Enter') {
+          this.authenticate();
+        }
+      };
 	
 	// Call custom vision model
 	private getFaceRecognitionResult(image: any) {
@@ -215,8 +225,22 @@ class App extends React.Component<{}, IState> {
 
 	// Authenticate
 	private authenticate() {
-		const screenshot = this.state.refCamera.current.getScreenshot();
-		this.getFaceRecognitionResult(screenshot);
+		const idInput = document.getElementById("user-input") as HTMLInputElement
+		const passwordInput = document.getElementById("password-input") as HTMLInputElement
+		if(idInput.value===""){
+			alert("Please enter your id!!")
+		}else{
+			if(passwordInput.value === "1111"){
+				this.setState({authenticated: true})
+				this.setState({user:idInput.value})
+			}else{
+				const screenshot = this.state.refCamera.current.getScreenshot();
+			this.getFaceRecognitionResult(screenshot);
+			}
+			
+		}
+
+		
 	}
 
 	// Modal open

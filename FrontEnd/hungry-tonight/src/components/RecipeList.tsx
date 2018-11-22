@@ -25,7 +25,7 @@ export default class RecipeList extends React.Component<IProps, {}> {
 			<div>
 
                     <div className="input-group search">
-                        <input type="text" id="search-tag-textbox" className="form-control" placeholder="Search By Tags" />
+                        <input type="text" id="search-tag-textbox" className="form-control" placeholder="Search By Cuisine Type" onKeyPress={this.handleKeyPress} />
                         <div className="input-group-append">
                             <div className="btn btn-outline-secondary search-button" onClick = {this.searchByTag}>Search</div>
                         </div>
@@ -38,6 +38,12 @@ export default class RecipeList extends React.Component<IProps, {}> {
             </div>
 		);
     }
+
+    private handleKeyPress = (event:any) => {
+        if (event.key === 'Enter') {
+          this.searchByTag();
+        }
+      };
 
     // Construct cards and display it on the page for each recipes
 	private createCardsList() {

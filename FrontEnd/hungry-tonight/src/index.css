@@ -1,5 +1,5 @@
 body{
-  background-color:#af2929;
+  background-color:#991c1c;
   font-family: Helvetica;
   
 }
@@ -8,6 +8,8 @@ body{
   text-align: center;
   margin:10px;
 }
+
+
 
 .body{
   align-items: center;
@@ -22,20 +24,29 @@ body{
 
 }
 
-button:focus, input[type="button"]:focus {
-  outline: none;
-}
+/* button:focus, input[type="button"]:focus {
+    outline:none;
+} */
 
 .header {
   display: flex;
-  align-items: left;
-  justify-content: left;
+  align-items: center;
+  justify-content: center;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-weight: bold;
   position: relative;
-  margin-left:90px;
   padding-top:10px;
 
+}
+
+.form-control{
+  margin-bottom:5px;
+}
+
+.login a{
+  margin-top:-5px;
+  font-size:18px;
+  font-style: italic;
 }
 
 .container{
@@ -84,8 +95,6 @@ button:focus, input[type="button"]:focus {
 
 .btn-action{
   font-family: Helvetica;
-  background-color:#f5a623;
-  border-color: #f5a623;
   height:40px;
   margin-right: 10px;
   font-size:18px;
@@ -94,10 +103,6 @@ button:focus, input[type="button"]:focus {
   padding-right: 20px;
 }
 
-.btn-action:hover {
-  background-color: #d18c1b;
-  border-color: #d18c1b;
-}
 
 /* recipe List */
 .recipe-list-wrapper {
@@ -202,14 +207,17 @@ h6{
   background-color: white;
 }
 
-.search-button:hover {
+.search-button:hover .search-button:focus {
   background-color: #ff483b;
   border-color: #ff483b;
   color: white;
 }
 
+
 .webcam{
   border-radius: 10px;
+  width:100%;
+  max-height: calc(100vh - 220px);
 }
 .login{
   margin: 0px;
@@ -242,9 +250,15 @@ h6{
     display: inline-block;
     width:30%;
     justify-self: center;
-    min-width: 340px;
-    min-height: 300px;
+    min-width: 200px;
+    min-height: 100px;
   }
+
+  @media screen and (max-width: 756px) {
+    .card {
+        width: 80%;
+    }
+}
     .card-body {
         white-space: normal;
   }
@@ -269,7 +283,7 @@ h6{
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: #d32a00; /* Set a background color */
+    background-color: #ff5f37; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
     padding: 15px; /* Some padding */
@@ -277,13 +291,14 @@ h6{
     font-size: 18px; /* Increase font size */
 }
 
-.add-button:hover {
-  background-color: rgb(255, 217, 217); /* Add a dark-grey background on hover */
+.add-button:hover, .search-button:focus {
+  background-color: rgb(253, 179, 179); /* Add a dark-grey background on hover */
   color:black;
 }
 
 .find-button {
   background-color: white; 
+  margin-top:10px;
   font-family:"Palatino Linotype", "Book Antiqua", Palatino, serif;
   color: #ff3f0f; 
   border: 2px solid #ff3f0f;
