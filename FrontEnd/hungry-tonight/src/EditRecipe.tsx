@@ -190,7 +190,7 @@ export default class EditRecipe extends React.Component<IProps, IState> {
                 alert(response.statusText + " " + url)
             } else {
                 alert("Update Successful!!")
-                location.reload()
+                location.reload() 
             }
         })
 	

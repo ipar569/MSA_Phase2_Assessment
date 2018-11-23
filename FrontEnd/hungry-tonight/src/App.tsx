@@ -70,9 +70,13 @@ class App extends React.Component<{}, IState> {
 						/> 
 						
 						<div className="login">
+						<a>*If you cannot see the face recognition please make sure that the url of the website starts with https://.
+							Without https connection, the internet browsers does not allow connection to the camera or webcam.</a><br/>
 							<input type="text" className="form-control" id="user-input" placeholder="Enter ID" onKeyPress={this.handleKeyPress}/>
 							<input type="password" className="form-control" id="password-input" placeholder="Enter Password - You can leave it empty if you have access to the webcam!!" onKeyPress={this.handleKeyPress}/>
-							<a>*The password is only needed if you do not have access to the camera or webcam!!</a><br/>
+							<a>*The password is only needed if you do not have access to the camera or webcam!!<br/>
+							For the markers and testers, the id is "admin" and password is "1111". Only available for testing and marking purpose as 
+							face recognition register is not avilable for this version.</a><br/>
 							<button className="find-button" onClick={this.authenticate}>Login</button>	
 							
 						</div>
